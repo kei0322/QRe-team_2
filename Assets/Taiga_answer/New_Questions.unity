@@ -6199,8 +6199,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391e3691ca893514a8d03586bb8487ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 329382498786983587, guid: 2fa4a86ebe11ed545ab12ab894ab6aad,
-    type: 3}
+  CubePrefabs:
+  - {fileID: 329382498786983587, guid: 2fa4a86ebe11ed545ab12ab894ab6aad, type: 3}
+  - {fileID: 7656801513657187961, guid: 7920ab1ab50ebad479f83b6ed85c53ca, type: 3}
+  - {fileID: 5431188850312070512, guid: 8721293b77c06f94bacbcd95bcdd77e2, type: 3}
+  - {fileID: 3652113162130375583, guid: fde94c8ef34b5ab429c15a6448d6c6d8, type: 3}
+  - {fileID: 8070489715113196607, guid: 3b0e18144971f7a4c8507a50b582e09a, type: 3}
+  - {fileID: 3316376079978997011, guid: 63f5baae6f4cf17429065b55f4d30a6b, type: 3}
+  - {fileID: 4149681981228007791, guid: 9360c749f927c2f4188e7c6045b6e7d4, type: 3}
+  - {fileID: 6636136136746179073, guid: 995a46469ef0c9342b62fe142c6ef1a6, type: 3}
+  - {fileID: 3390260935077962285, guid: a1a1a27636bd808469c621466724d660, type: 3}
+  - {fileID: 5083099116992592760, guid: c3395faccec29394b8a6ecdc4a80eba2, type: 3}
 --- !u!4 &1776500164
 Transform:
   m_ObjectHideFlags: 0
