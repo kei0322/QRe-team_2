@@ -2509,6 +2509,7 @@ MonoBehaviour:
   answer: {fileID: 1985912534}
   button_set: {fileID: 357467905}
   role_change_canvas: {fileID: 2026009011}
+  theme_change_canvas: {fileID: 29719456}
   questoner_canvas: {fileID: 607779125}
   respondent_canvas: {fileID: 1668003937}
   turn_panel: {fileID: 1970273497}

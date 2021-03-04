@@ -21,6 +21,7 @@ public class TurnBasedSystem : MonoBehaviourPunCallbacks, IPunTurnManagerCallbac
     private GameObject answer;
     public GameObject button_set;
     public GameObject role_change_canvas;
+    public GameObject theme_change_canvas;
     public GameObject questoner_canvas;
     public GameObject respondent_canvas;
     public GameObject turn_panel;
@@ -193,7 +194,9 @@ public class TurnBasedSystem : MonoBehaviourPunCallbacks, IPunTurnManagerCallbac
     [PunRPC]
     void panel_change()
     {
+        v.ep = false;
         role_change_canvas.gameObject.SetActive(true);
+        theme_change_canvas.gameObject.SetActive(true);
     }
 
     [PunRPC]
