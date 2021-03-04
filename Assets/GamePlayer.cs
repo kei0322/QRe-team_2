@@ -1,15 +1,20 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 // MonoBehaviourPunCallbacksを継承すると、photonViewプロパティが使えるようになる
 public class GamePlayer : MonoBehaviourPunCallbacks
 {
+    //[SerializeField]
+    //private TextMeshPro nameLabel = default;
+
     [SerializeField]
-    private TextMeshPro nameLabel = default;
+    private GameObject nameLabel;
     private void Start()
     {
-        nameLabel.text = photonView.Owner.NickName;
+        //nameLabel.text = photonView.Owner.NickName;
+        nameLabel.GetComponent<Text>().text = photonView.Owner.NickName;
     }
 
     private void Update()
