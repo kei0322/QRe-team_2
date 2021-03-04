@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Realtime;
 
 public class theme_change : MonoBehaviourPunCallbacks
@@ -22,22 +23,27 @@ public class theme_change : MonoBehaviourPunCallbacks
 
     public GameObject nocon;
 
+    public GameObject matchingtext;
+    public Text matchingnum;
+
     // Start is called before the first frame update
     void Start()
     {
         tb = false;
         pn = 0;
         pc = PhotonNetwork.CurrentRoom;
+        matchingtext.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
         v.all_player = pc.PlayerCount;
-
+        matchingnum.text = pc.MaxPlayers +"人中" + pc.PlayerCount + "人が集まりました";
         photonView.RPC(nameof(room_creator), RpcTarget.MasterClient);
         if (v.all_player == pc.MaxPlayers)
         {
+            matchingtext.gameObject.SetActive(false);
             pc.IsVisible = false;
             if (tb)
             {
