@@ -61,7 +61,16 @@ public class role_change : MonoBehaviourPunCallbacks
     public void questoner()
     {
         ans = (int)Random.Range(0.0f, 3.0f);//三人の中から答えとなる人を一人選ぶ
-        cho = (int)Random.Range(0.0f, 18.0f);//いっぱいの中からクイズのセットを選ぶ
+        //偉人0~17　カオス0~18
+        if (v.theme == "greatman")
+        {
+            cho = (int)Random.Range(0.0f, 17.0f);//いっぱいの中からクイズのセットを選ぶ
+        }
+        else if(v.theme == "chaos")
+        {
+            cho = (int)Random.Range(0.0f, 18.0f);//いっぱいの中からクイズのセットを選ぶ
+        }
+        
         //ans = 2;
         photonView.RPC(nameof(answer_share), RpcTarget.All, ans);//全員の答えとなる人を0番(1番左)に設定する
 
