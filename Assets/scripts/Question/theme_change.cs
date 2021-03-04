@@ -17,13 +17,11 @@ public class theme_change : MonoBehaviourPunCallbacks
     public GameObject text;
 
     private bool tb;
-    private bool ep;
 
     // Start is called before the first frame update
     void Start()
     {
         tb = false;
-        ep = false;
     }
 
     // Update is called once per frame
@@ -37,7 +35,7 @@ public class theme_change : MonoBehaviourPunCallbacks
             text.gameObject.SetActive(true);
             theme_button.gameObject.SetActive(false);
         }
-        if (ep) theme_canvas.gameObject.SetActive(false);
+        if (v.ep) theme_canvas.gameObject.SetActive(false);
     }
 
     public void greatman()
@@ -73,7 +71,7 @@ public class theme_change : MonoBehaviourPunCallbacks
     [PunRPC]
     void erase_panel()
     {
-        ep = true;
+        v.ep = true;
     }
 
     [PunRPC]

@@ -27,4 +27,5 @@ public class v : MonoBehaviour
     public static int correct0 = 0;//0番(1番左)が答えの選択をした人数
     public static int correct1 = 0;//1番(真ん中)が答えの選択をした人数
     public static int correct2 = 0;//2番(1番右)が答えの選択をした人数
+    public static bool ep = false; //チーム選択のフラグ
 }
