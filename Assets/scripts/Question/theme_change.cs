@@ -17,25 +17,42 @@ public class theme_change : MonoBehaviourPunCallbacks
     public GameObject text;
 
     private bool tb;
+    private int pn;
+    private Room pc;
+
+    public GameObject nocon;
 
     // Start is called before the first frame update
     void Start()
     {
         tb = false;
+        pn = 0;
+        pc = PhotonNetwork.CurrentRoom;
     }
 
     // Update is called once per frame
     void Update()
     {
-        photonView.RPC(nameof(room_creator), RpcTarget.MasterClient);
+        v.all_player = pc.PlayerCount;
 
-        if (tb) theme_button.gameObject.SetActive(true);
-        if (tb==false)
+        photonView.RPC(nameof(room_creator), RpcTarget.MasterClient);
+        if (v.all_player == pc.MaxPlayers)
         {
-            text.gameObject.SetActive(true);
-            theme_button.gameObject.SetActive(false);
+            pc.IsVisible = false;
+            if (tb)
+            {
+                theme_button.gameObject.SetActive(true);
+                text.gameObject.SetActive(false);
+            }
+            if (tb == false)
+            {
+                text.gameObject.SetActive(true);
+                theme_button.gameObject.SetActive(false);
+            }
         }
         if (v.ep) theme_canvas.gameObject.SetActive(false);
+        Debug.Log("参加者数 : " + pc.PlayerCount + "/最大人数 : " + pc.MaxPlayers);
+        Debug.Log("v.allplayer : " + v.all_player);
     }
 
     public void greatman()
@@ -59,7 +76,13 @@ public class theme_change : MonoBehaviourPunCallbacks
         Debug.Log("ルーム名:" + myroom.Name);
         Debug.Log("PlayerNo" + player.ActorNumber);
         Debug.Log("プレイヤーID" + player.UserId);
-        photonView.RPC(nameof(all_player_share), RpcTarget.All, player.ActorNumber);
+        //photonView.RPC(nameof(all_player_share), RpcTarget.All, player.ActorNumber);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        photonView.RPC(nameof(closepop), RpcTarget.All);
+        //base.OnLeftRoom();
     }
 
     [PunRPC]
@@ -75,18 +98,17 @@ public class theme_change : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void all_player_share(int num)
-    {
-        v.all_player = num;
-    }
-
-    [PunRPC]
     void theme_set(string theme)
     {
         v.theme = theme;
     }
 
 
+    [PunRPC]
+    void closepop()
+    {
+        nocon.gameObject.SetActive(true);
+    }
 
 
 
