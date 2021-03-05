@@ -21,8 +21,6 @@ public class theme_change : MonoBehaviourPunCallbacks
     private int pn;
     private Room pc;
 
-    public GameObject nocon;
-
     public GameObject matchingtext;
     public Text matchingnum;
 
@@ -85,12 +83,6 @@ public class theme_change : MonoBehaviourPunCallbacks
         //photonView.RPC(nameof(all_player_share), RpcTarget.All, player.ActorNumber);
     }
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
-    {
-        photonView.RPC(nameof(closepop), RpcTarget.All);
-        //base.OnLeftRoom();
-    }
-
     [PunRPC]
     void room_creator()
     {
@@ -110,11 +102,7 @@ public class theme_change : MonoBehaviourPunCallbacks
     }
 
 
-    [PunRPC]
-    void closepop()
-    {
-        nocon.gameObject.SetActive(true);
-    }
+   
 
 
 
