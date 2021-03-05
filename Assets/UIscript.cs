@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Realtime;
 
@@ -20,5 +21,16 @@ public class UIscript : MonoBehaviourPunCallbacks
     void closepop()
     {
         nocon.gameObject.SetActive(true);
+    }
+
+    //　ログアウトボタンを押した時の処理
+    public void LogoutGame()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

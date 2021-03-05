@@ -29,6 +29,7 @@ public class theme_change : MonoBehaviourPunCallbacks
     {
         tb = false;
         pn = 0;
+        v.ep = false;
         pc = PhotonNetwork.CurrentRoom;
         matchingtext.gameObject.SetActive(true);
     }
@@ -39,7 +40,7 @@ public class theme_change : MonoBehaviourPunCallbacks
         v.all_player = pc.PlayerCount;
         matchingnum.text = pc.MaxPlayers +"人中" + pc.PlayerCount + "人が集まりました";
         photonView.RPC(nameof(room_creator), RpcTarget.MasterClient);
-        if (v.all_player == pc.MaxPlayers)
+        if (pc.PlayerCount == pc.MaxPlayers)
         {
             matchingtext.gameObject.SetActive(false);
             pc.IsVisible = false;
@@ -53,8 +54,9 @@ public class theme_change : MonoBehaviourPunCallbacks
                 text.gameObject.SetActive(true);
                 theme_button.gameObject.SetActive(false);
             }
+            if (v.ep) theme_canvas.gameObject.SetActive(false);
         }
-        if (v.ep) theme_canvas.gameObject.SetActive(false);
+       
         Debug.Log("参加者数 : " + pc.PlayerCount + "/最大人数 : " + pc.MaxPlayers);
         Debug.Log("v.allplayer : " + v.all_player);
     }
