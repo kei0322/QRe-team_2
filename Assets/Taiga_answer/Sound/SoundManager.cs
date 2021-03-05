@@ -26,7 +26,8 @@ public class SoundManager : MonoBehaviour
 
         //最初のBGM再生
         source.clip = BGM_lobby;
-        source.Play();
+        Invoke("SoundPlay", 3.5f);//白いパネルの表示時間＋0.5fくらいがちょうどよさそう
+       
 
         //シーンが切り替わった時に呼ばれるメソッドを登録
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
@@ -55,5 +56,10 @@ public class SoundManager : MonoBehaviour
 
         //遷移後のシーン名を「１つ前のシーン名」として保持
         beforeScene = nextScene.name;
+    }
+
+    void SoundPlay()
+    {
+        source.Play();
     }
 }
