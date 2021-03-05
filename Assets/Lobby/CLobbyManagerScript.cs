@@ -34,7 +34,7 @@ namespace Com.MyCompany.MyGame
             timeleft -= Time.deltaTime;
             if (timeleft <= 0.0)
             {
-                timeleft = 1f;
+                timeleft = 5f;
 
                 //ここに処理
                 PhotonNetwork.LeaveLobby();
