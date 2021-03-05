@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip BGM_lobby;
     public AudioClip BGM_game;
 
+    public GameObject fadepanel;
     //使用するAudioSource
     private AudioSource source;
 
@@ -61,5 +62,6 @@ public class SoundManager : MonoBehaviour
     void SoundPlay()
     {
         source.Play();
+        fadepanel.gameObject.SetActive(false);
     }
 }
